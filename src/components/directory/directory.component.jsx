@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 import MenuItem from '../menu-item/menu-item.component';
 
@@ -49,8 +50,8 @@ class Directory extends React.Component {
         return (
             <div className='directory-menu'>
                 {
-                    this.state.section.map(({title, imageUrl, id, size}) => (
-                        <MenuItem key={id} title={title} imageUrl={imageUrl} size={size}/>
+                    this.state.section.map(({ id, ...otherSectionProps }) => (
+                        <MenuItem key={id} {...otherSectionProps}/>
                     ))
                 }
             </div>
@@ -58,4 +59,4 @@ class Directory extends React.Component {
     } 
 }
 
-export default Directory;
+export default withRouter(Directory);
